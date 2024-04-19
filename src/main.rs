@@ -1,18 +1,9 @@
+mod tally_args;
 mod tally_command;
 
 use clap::Parser;
+use tally_args::Args;
 use tally_command::Command;
-
-#[derive(Parser, Debug)]
-#[command(version, about, long_about = None)]
-struct Args {
-    #[command(subcommand)]
-    command: Command,
-
-    /// A category for the command
-    #[arg(short, long, global = true)]
-    category: Option<String>,
-}
 
 fn increment(item: String, count: u32) {
     println!("Incrementing {} by {}", item, count);
